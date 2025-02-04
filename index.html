@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de IMC SAYTHE</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .delgadez {
+      color: #ff9800;
+    }
+
+    .normal {
+      color: #4caf50;
+    }
+
+    .sobrepeso {
+      color: #ff5722;
+    }
+
+    .obesidad {
+      color: #d32f2f;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Calculadora de IMC</h1>
+    <p>Ingrese sus datos para calcular su Índice de Masa Corporal (IMC)</p>
+
+    <label>Nombre:</label>
+    <input type="text" id="nombre" placeholder="Ingrese su nombre">
+
+    <label>Edad:</label>
+    <input type="number" id="edad" placeholder="Ingrese su edad">
+
+    <label>Altura (metros):</label>
+    <input type="number" id="altura" placeholder="Ejemplo: 1.75" step="0.01">
+
+    <label>Peso (kg):</label>
+    <input type="number" id="peso" placeholder="Ejemplo: 70" step="0.1">
+
+    <button onclick="calcularIMC()">Calcular IMC</button>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularIMC() {
+      let nombre = document.getElementById("nombre").value.trim();
+      let edad = document.getElementById("edad").value;
+      let altura = parseFloat(document.getElementById("altura").value);
+      let peso = parseFloat(document.getElementById("peso").value);
+      let resultado = document.getElementById("resultado");
+      if (nombre === "" || edad <= 0 || altura <= 0 || peso <= 0 || isNaN(altura) || isNaN(peso)) {
+        resultado.innerHTML = "❌ Ingrese valores válidos.";
+        resultado.style.color = "red";
+        return;
+      }
+      let IMC = peso / (altura * altura);
+      let diagnostico = "";
+      let claseCSS = "";
+      if (IMC < 16.00) {
+        diagnostico = "Delgadez Severa 🛑";
+        claseCSS = "delgadez";
+      } else if (IMC <= 16.99) {
+        diagnostico = "Delgadez Moderada ⚠️";
+        claseCSS = "delgadez";
+      } else if (IMC <= 18.49) {
+        diagnostico = "Bajo Peso 🟡";
+        claseCSS = "delgadez";
+      } else if (IMC <= 24.99) {
+        diagnostico = "Peso Normal ✅";
+        claseCSS = "normal";
+      } else if (IMC <= 29.99) {
+        diagnostico = "Sobrepeso 🔶";
+        claseCSS = "sobrepeso";
+      } else if (IMC <= 34.99) {
+        diagnostico = "Obesidad Grado I (Moderada) 🟥";
+        claseCSS = "obesidad";
+      } else if (IMC <= 39.99) {
+        diagnostico = "Obesidad Grado II (Severa) 🟥";
+        claseCSS = "obesidad";
+      } else {
+        diagnostico = "Obesidad Grado III (Mórbida) 🔴";
+        claseCSS = "obesidad";
+      }
+      resultado.innerHTML = `📊 Hola ${nombre}, tu IMC es <strong>${IMC.toFixed(2)}</strong><br> 🔍 Diagnóstico: <span class="${claseCSS}">${diagnostico}</span>`;
+    }
+  </script>
+</body>
+
+</html><!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de IMC SAYTHE</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .delgadez {
+      color: #ff9800;
+    }
+
+    .normal {
+      color: #4caf50;
+    }
+
+    .sobrepeso {
+      color: #ff5722;
+    }
+
+    .obesidad {
+      color: #d32f2f;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Calculadora de IMC</h1>
+    <p>Ingrese sus datos para calcular su Índice de Masa Corporal (IMC)</p>
+
+    <label>Nombre:</label>
+    <input type="text" id="nombre" placeholder="Ingrese su nombre">
+
+    <label>Edad:</label>
+    <input type="number" id="edad" placeholder="Ingrese su edad">
+
+    <label>Altura (metros):</label>
+    <input type="number" id="altura" placeholder="Ejemplo: 1.75" step="0.01">
+
+    <label>Peso (kg):</label>
+    <input type="number" id="peso" placeholder="Ejemplo: 70" step="0.1">
+
+    <button onclick="calcularIMC()">Calcular IMC</button>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularIMC() {
+      let nombre = document.getElementById("nombre").value.trim();
+      let edad = document.getElementById("edad").value;
+      let altura = parseFloat(document.getElementById("altura").value);
+      let peso = parseFloat(document.getElementById("peso").value);
+      let resultado = document.getElementById("resultado");
+      if (nombre === "" || edad <= 0 || altura <= 0 || peso <= 0 || isNaN(altura) || isNaN(peso)) {
+        resultado.innerHTML = "❌ Ingrese valores válidos.";
+        resultado.style.color = "red";
+        return;
+      }
+      let IMC = peso / (altura * altura);
+      let diagnostico = "";
+      let claseCSS = "";
+      if (IMC < 16.00) {
+        diagnostico = "Delgadez Severa 🛑";
+        claseCSS = "delgadez";
+      } else if (IMC <= 16.99) {
+        diagnostico = "Delgadez Moderada ⚠️";
+        claseCSS = "delgadez";
+      } else if (IMC <= 18.49) {
+        diagnostico = "Bajo Peso 🟡";
+        claseCSS = "delgadez";
+      } else if (IMC <= 24.99) {
+        diagnostico = "Peso Normal ✅";
+        claseCSS = "normal";
+      } else if (IMC <= 29.99) {
+        diagnostico = "Sobrepeso 🔶";
+        claseCSS = "sobrepeso";
+      } else if (IMC <= 34.99) {
+        diagnostico = "Obesidad Grado I (Moderada) 🟥";
+        claseCSS = "obesidad";
+      } else if (IMC <= 39.99) {
+        diagnostico = "Obesidad Grado II (Severa) 🟥";
+        claseCSS = "obesidad";
+      } else {
+        diagnostico = "Obesidad Grado III (Mórbida) 🔴";
+        claseCSS = "obesidad";
+      }
+      resultado.innerHTML = `📊 Hola ${nombre}, tu IMC es <strong>${IMC.toFixed(2)}</strong><br> 🔍 Diagnóstico: <span class="${claseCSS}">${diagnostico}</span>`;
+    }
+  </script>
+</body>
+
+</html>
